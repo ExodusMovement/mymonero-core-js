@@ -16,7 +16,6 @@ set(MONERO_SRC "${MYMONERO_CORE_CPP}/contrib/monero-core-custom")
 include_directories(${MONERO_SRC})
 include_directories("${MONERO_SRC}/epee/include")
 include_directories("${MONERO_SRC}/common")
-include_directories("${MONERO_SRC}/vtlogger")
 include_directories("${MONERO_SRC}/crypto")
 include_directories("${MONERO_SRC}/cryptonote_basic")
 include_directories("${MONERO_SRC}/multisig")
@@ -28,7 +27,7 @@ include_directories("${MONERO_SRC}/mnemonics")
 include_directories("${MONERO_SRC}/contrib/libsodium/include") # support sodium/… paths
 include_directories("${MONERO_SRC}/contrib/libsodium/include/sodium")
 #
-# keeping test files in a separate source directory 
+# keeping test files in a separate source directory
 # file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} test/test_*.cpp)
 #
 set(
@@ -66,6 +65,7 @@ set(
     ${MONERO_SRC}/cryptonote_basic/cryptonote_format_utils.cpp
     ${MONERO_SRC}/crypto/crypto.cpp
     ${MONERO_SRC}/crypto/hash.c
+    ${MONERO_SRC}/crypto/rx-slow-hash-dummied.cpp
     ${MONERO_SRC}/crypto/slow-hash-dummied.cpp
     ${MONERO_SRC}/crypto/oaes_lib.c
     ${MONERO_SRC}/crypto/crypto-ops.c
@@ -93,6 +93,7 @@ set(
     ${MONERO_SRC}/epee/src/memwipe.c
     ${MONERO_SRC}/epee/src/mlocker.cpp
     ${MONERO_SRC}/epee/src/wipeable_string.cpp
+    ${MONERO_SRC}/epee/src/int-util.cpp
     ${MONERO_SRC}/device/device.cpp
     ${MONERO_SRC}/device/device_default.cpp
     ${MONERO_SRC}/ringct/rctOps.cpp
@@ -102,7 +103,6 @@ set(
     ${MONERO_SRC}/ringct/bulletproofs.cc
     ${MONERO_SRC}/ringct/multiexp.cc
     ${MONERO_SRC}/mnemonics/electrum-words.cpp
-    ${MONERO_SRC}/vtlogger/logger.cpp
     ${MONERO_SRC}/contrib/libsodium/src/crypto_verify/verify.c
 )
 
