@@ -100,5 +100,6 @@ module.exports = function(options)
 		} else { // this is synchronous so we can resolve immediately
 			console.log("Using wasm: ", false)
 			throw new Error('ASMJS version has been removed in this fork')
+    }
 	});
 };
