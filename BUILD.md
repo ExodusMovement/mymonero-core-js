@@ -13,6 +13,7 @@ cd mymonero-core-js
 
 # Remove the existing files, we'll build them in the next section
 rm monero_utils/MyMoneroCoreCpp_*
+rm -rf build && mkdir build
 
 # Prepare boost source code
 curl -LO https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
