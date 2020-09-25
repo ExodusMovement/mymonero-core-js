@@ -10,6 +10,7 @@ For macOS, download it at https://hub.docker.com/editions/community/docker-ce-de
 # Clone repo and submodules
 git clone git@github.com:ExodusMovement/mymonero-core-js.git --recursive
 cd mymonero-core-js
+sed -i 's/emconfigure/emmake/' bin/build-emcpp.sh
 
 # Remove the existing files, we'll build them in the next section
 rm monero_utils/MyMoneroCoreCpp_*
