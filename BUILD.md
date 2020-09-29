@@ -10,7 +10,6 @@ For macOS, download it at https://hub.docker.com/editions/community/docker-ce-de
 # Clone repo and submodules
 git clone git@github.com:ExodusMovement/mymonero-core-js.git --recursive
 cd mymonero-core-js
-sed -i 's/emconfigure/emmake/' bin/build-emcpp.sh
 
 # Remove the existing files, we'll build them in the next section
 rm monero_utils/MyMoneroCoreCpp_*
@@ -26,14 +25,14 @@ tar zxf boost_1_69_0.tar.gz -C contrib/boost-sdk --strip-components=1
 
 ```shell
 # Build boost emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten ./bin/build-boost-emscripten.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/build-boost-emscripten.sh
 
 # Build MyMonero emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten ./bin/archive-emcpp.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/archive-emcpp.sh
 
 # If you get '#error Including <emscripten/bind.h> requires building with -std=c++11 or newer!' error, re-run:
 
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten ./bin/archive-emcpp.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/archive-emcpp.sh
 
 # Create monero_utils/MyMoneroCoreCpp_* files, they should be same as the ones in repo.
 ```
