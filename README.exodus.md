@@ -1,8 +1,9 @@
 ## Upgrade mymonero-core-cpp
 
+> only support master branch
+
 ```
-cd src/submodules/mymonero-core-cpp/
-git pull
+bin/update_submodules
 ```
 
 ## Build
@@ -17,12 +18,7 @@ For macOS, download it at https://hub.docker.com/editions/community/docker-ce-de
 
 ```shell
 # Clone repo and submodules
-git clone git@github.com:ExodusMovement/mymonero-core-js.git --recursive
-cd mymonero-core-js
-
-# Remove the existing files, we'll build them in the next section
-rm monero_utils/MyMoneroCoreCpp_*
-rm -rf build && mkdir build
+git clone git@github.com:ExodusMovement/mymonero-core-js.git
 
 # Prepare boost source code
 curl -LO https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
@@ -34,6 +30,13 @@ tar zxf boost_1_69_0.tar.gz -C contrib/boost-sdk --strip-components=1
 ### 3. Build emscripten
 
 ```shell
+# Update mymonero-core-cpp
+bin/update_submodules
+
+# Clean up old build files
+rm -rf build && mkdir build
+rm monero_utils/MyMoneroCoreCpp_*
+
 # Build boost emscripten
 docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/build-boost-emscripten.sh
 
