@@ -1,3 +1,12 @@
+## Upgrade mymonero-core-cpp
+
+```
+cd src/submodules/mymonero-core-cpp/
+git pull
+```
+
+## Build
+
 > In order to create an deterministic build, we're using docker.
 
 ### 1. Install Docker
