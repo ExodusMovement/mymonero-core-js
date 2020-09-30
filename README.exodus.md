@@ -1,9 +1,7 @@
-## Upgrade mymonero-core-cpp
-
-> only support master branch
+## Upgrade submodules
 
 ```
-bin/update_submodules
+bin/update_submodules   // only support master branch
 ```
 
 ## Build
@@ -30,8 +28,8 @@ tar zxf boost_1_69_0.tar.gz -C contrib/boost-sdk --strip-components=1
 ### 3. Build emscripten
 
 ```shell
-# Update mymonero-core-cpp
-bin/update_submodules
+git pull
+git submodule update
 
 # Clean up old build files
 rm -rf build && mkdir build
