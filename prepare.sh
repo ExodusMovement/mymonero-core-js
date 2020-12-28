@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e # Exit on any error
+
 # Dependencies
 
 ## These should be audited!
