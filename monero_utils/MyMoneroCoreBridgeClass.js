@@ -31,7 +31,6 @@
 // Modified to add RingCT support by luigi1111 (2017)
 //
 // v--- These should maybe be injected into a context and supplied to currencyConfig for future platforms
-const JSBigInt = require("../cryptonote_utils/biginteger").BigInteger;
 const nettype_utils = require("../cryptonote_utils/nettype");
 //
 const MyMoneroCoreBridgeEssentialsClass = require('./MyMoneroCoreBridgeEssentialsClass')
@@ -515,11 +514,7 @@ class MyMoneroCoreBridgeClass extends MyMoneroCoreBridgeEssentialsClass
 				return { 
 					required_balance: ret.required_balance,
 					spendable_balance: ret.spendable_balance,
-					err_msg: `Spendable balance too low. Have ${
-						monero_amount_format_utils.formatMoney(new JSBigInt(ret.spendable_balance))
-					} ${monero_config.coinSymbol}; need ${
-						monero_amount_format_utils.formatMoney(new JSBigInt(ret.required_balance))
-					} ${monero_config.coinSymbol}.` 
+					err_msg: 'Spendable balance too low.'
 				};
 			}
 			if (typeof ret.err_msg !== 'undefined' && ret.err_msg) {
