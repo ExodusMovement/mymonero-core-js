@@ -51,7 +51,7 @@ if [ "$(shasum -a 256 'boost_1_69_0.tar.gz' | sed s/' .*'//)" != "${boost_sha256
 fi
 
 echo "Extracting boost..."
-rm -rf 'contrib/boost-sd' && mkdir -p 'contrib/boost-sdk'
+rm -rf 'contrib/boost-sdk' && mkdir -p 'contrib/boost-sdk'
 tar zxf 'boost_1_69_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
 
 # Prepare for build
