@@ -21,12 +21,12 @@ function clonerepo { # source, target, commit
   rm -rf "$2"
   oldpwd="$(pwd)"
 
-  git clone "${1}" "${2}" || exit -1
+  git clone "${1}" "${2}" || exit 1
   cd "$2"
-  git reset --hard "$3" || exit -1
+  git reset --hard "$3" || exit 1
   if [ "$(git rev-parse HEAD)" != "$3" ]; then
     echo "Wrong HEAD!"
-    exit -1
+    exit 1
   fi
 
   cd "$oldpwd"
@@ -47,7 +47,7 @@ if [[ ! -f "boost_1_69_0.tar.gz" ]]; then
 fi
 if [ "$(shasum -a 256 'boost_1_69_0.tar.gz' | sed s/' .*'//)" != "${boost_sha256}" ]; then
   echo "Invalid boost shasum!"
-  exit -1
+  exit 1
 fi
 
 echo "Extracting boost..."
