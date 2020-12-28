@@ -8,7 +8,7 @@ For macOS, download it at https://hub.docker.com/editions/community/docker-ce-de
 
 ```shell
 git pull
-./prepare.sh
+./prepare.sh # Should finish with "All done! We are prepared for the build now."
 ```
 
 ### 3. Build emscripten
