@@ -113,11 +113,12 @@ set_target_properties(
 #
 #
 set (
-    EMCC_LINKER_FLAGS___BASE
+    EMCC_LINKER_FLAGS__WASM
     #unsure if the -I...boost..include is necessary here due to include above
     #
     "-Wall -std=c++11 \
---bind -s MODULARIZE=1 \
+--bind \
+-s MODULARIZE=1 \
 -s 'EXPORT_NAME=\"MyMoneroCoreCpp\"' \
 --llvm-lto 1 \
 -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
@@ -131,22 +132,17 @@ set (
 -s NO_DYNAMIC_EXECUTION=1 \
 -s NODEJS_CATCH_EXIT=0 \
 -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"UTF8ToString\"]' \
+\
+-s WASM=1 \
+-Oz \
+-s ALLOW_MEMORY_GROWTH=1 \
+--post-js ${CMAKE_CURRENT_LIST_DIR}/src/module-post.js \
 "
     # • Disabling exception catching does not introduce silent failures 
     # • Probably don't need PRECISE_F32 but wouldn't want to not use it
     #
     #
     # -s SAFE_HEAP=1 \
-    # -g \
-)
-set(
-    EMCC_LINKER_FLAGS__WASM
-    "${EMCC_LINKER_FLAGS___BASE} \
--s WASM=1 \
--Oz \
--s ALLOW_MEMORY_GROWTH=1 \
---post-js ${CMAKE_CURRENT_LIST_DIR}/src/module-post.js \
-"
     # -g \
 )
 #
