@@ -14,7 +14,7 @@ boost_sha256='9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb' 
 
 if [ "$(basename "$(pwd)")" != "mymonero-core-js" ]; then
   echo "Should be ran from the repo dir!"
-  exit -1
+  exit 1
 fi
 
 function clonerepo { # source, target, commit
