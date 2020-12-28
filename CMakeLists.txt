@@ -116,7 +116,6 @@ set (
     EMCC_LINKER_FLAGS___BASE
     #unsure if the -I...boost..include is necessary here due to include above
     #
-    # TODO? does EXPORT_NAME need to be the same for both targets? (or should it be set per-target with …_WASM, …_ASMJS?)
     "-Wall -std=c++11 \
 --bind -s MODULARIZE=1 \
 -s 'EXPORT_NAME=\"MyMoneroCoreCpp\"' \
@@ -141,22 +140,6 @@ set (
     # -g \
 )
 set(
-    EMCC_LINKER_FLAGS__ASMJS
-    "${EMCC_LINKER_FLAGS___BASE} \
--s WASM=0 \
--Os \
---separate-asm \
--s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
--s ALLOW_MEMORY_GROWTH=0 \
---memory-init-file 0 \
--s SEPARATE_ASM_MODULE_NAME=asmjs \
-"
-    # --memory-init-file is explicitly set to 0 because optimization level is Oz, and some clients like React Native have trouble loading .mem files
-    # .... it also didn't seem to have a giant impact on perf. but this should be tested again
-    #
-    # --closure 1 \
-)
-set(
     EMCC_LINKER_FLAGS__WASM
     "${EMCC_LINKER_FLAGS___BASE} \
 -s WASM=1 \
@@ -171,16 +154,10 @@ set(
 #
 #
 message(STATUS "EMCC_LINKER_FLAGS__WASM ${EMCC_LINKER_FLAGS__WASM}")
-message(STATUS "EMCC_LINKER_FLAGS__ASMJS ${EMCC_LINKER_FLAGS__ASMJS}")
 #
 add_executable(MyMoneroCoreCpp_WASM ${SRC_FILES})
-add_executable(MyMoneroCoreCpp_ASMJS ${SRC_FILES})
 #
 set_target_properties(MyMoneroCoreCpp_WASM PROPERTIES LINK_FLAGS "${EMCC_LINKER_FLAGS__WASM}")
-set_target_properties(MyMoneroCoreCpp_ASMJS PROPERTIES LINK_FLAGS "${EMCC_LINKER_FLAGS__ASMJS}")
-#
-# set_target_properties(MyMoneroCoreCpp_WASM PROPERTIES SUFFIX ".html")
-# set_target_properties(MyMoneroCoreCpp_ASMJS PROPERTIES SUFFIX ".html")
 #
 # boost_atomic
 # boost_date_time
@@ -195,15 +172,6 @@ set_target_properties(MyMoneroCoreCpp_ASMJS PROPERTIES LINK_FLAGS "${EMCC_LINKER
 #
 target_link_libraries(
     MyMoneroCoreCpp_WASM
-    #
-    boost_chrono
-    boost_system
-    boost_thread
-    #
-    ${log-lib}
-)
-target_link_libraries(
-    MyMoneroCoreCpp_ASMJS
     #
     boost_chrono
     boost_system
