@@ -31,7 +31,6 @@
 // Modified to add RingCT support by luigi1111 (2017)
 //
 // v--- These should maybe be injected into a context and supplied to currencyConfig for future platforms
-const JSBigInt = require("../cryptonote_utils/biginteger").BigInteger;
 const nettype_utils = require("../cryptonote_utils/nettype");
 //
 const MyMoneroBridgeClass_Base = require('./MyMoneroBridgeClass_Base')
@@ -313,7 +312,7 @@ class MyMoneroCoreBridgeEssentialsClass extends MyMoneroBridgeClass_Base
 		{
 			fee_per_b: typeof optl__fee_per_b_string !== undefined && optl__fee_per_b_string != null 
 				? optl__fee_per_b_string 
-				: (new JSBigInt(fee_per_kb__string)).divide(1024).toString()/*kib -> b*/, 
+				: `${BigInt(fee_per_kb__string) / BigInt(1024)}` /*kib -> b*/,
 			priority: "" + priority,
 		};
 		if (typeof optl__fork_version !== 'undefined' && optl__fork_version !== null) {

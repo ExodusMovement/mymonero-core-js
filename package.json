@@ -43,7 +43,6 @@
   },
   "files": [
     "index.js",
-    "cryptonote_utils/biginteger.js",
     "cryptonote_utils/nettype.js",
     "monero_utils/MyMoneroBridgeClass_Base.js",
     "monero_utils/MyMoneroBridge_utils.js",
