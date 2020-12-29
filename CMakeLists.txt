@@ -137,6 +137,8 @@ set (
 -Oz \
 -s ALLOW_MEMORY_GROWTH=1 \
 --post-js ${CMAKE_CURRENT_LIST_DIR}/src/module-post.js \
+\
+-s AUTO_JS_LIBRARIES=0 \
 "
     # • Disabling exception catching does not introduce silent failures 
     # • Probably don't need PRECISE_F32 but wouldn't want to not use it
