@@ -295,40 +295,40 @@ string extract_utxos(const string &args_string)
 //
 EMSCRIPTEN_BINDINGS(my_module)
 { // C++ -> JS
-    emscripten::function("send_funds", &send_funds);
-    emscripten::function("send_cb_I__got_unspent_outs", &send_cb_I__got_unspent_outs);
-    emscripten::function("send_cb_II__got_random_outs", &send_cb_II__got_random_outs);
-    emscripten::function("send_cb_III__submitted_tx", &send_cb_III__submitted_tx);
+    // emscripten::function("send_funds", &send_funds);
+    // emscripten::function("send_cb_I__got_unspent_outs", &send_cb_I__got_unspent_outs);
+    // emscripten::function("send_cb_II__got_random_outs", &send_cb_II__got_random_outs);
+    // emscripten::function("send_cb_III__submitted_tx", &send_cb_III__submitted_tx);
     //
-    emscripten::function("decode_address", &decode_address);
-    emscripten::function("is_subaddress", &is_subaddress);
-    emscripten::function("is_integrated_address", &is_integrated_address);
+    // emscripten::function("decode_address", &decode_address);
+    // emscripten::function("is_subaddress", &is_subaddress);
+    // emscripten::function("is_integrated_address", &is_integrated_address);
     //
-    emscripten::function("new_integrated_address", &new_integrated_address);
-    emscripten::function("new_payment_id", &new_payment_id);
+    // emscripten::function("new_integrated_address", &new_integrated_address);
+    // emscripten::function("new_payment_id", &new_payment_id);
     //
-    emscripten::function("newly_created_wallet", &newly_created_wallet);
-    emscripten::function("are_equal_mnemonics", &are_equal_mnemonics);
+    // emscripten::function("newly_created_wallet", &newly_created_wallet);
+    // emscripten::function("are_equal_mnemonics", &are_equal_mnemonics);
     emscripten::function("mnemonic_from_seed", &mnemonic_from_seed);
-    emscripten::function("seed_and_keys_from_mnemonic", &seed_and_keys_from_mnemonic);
-    emscripten::function("validate_components_for_login", &validate_components_for_login);
-    emscripten::function("address_and_keys_from_seed", &address_and_keys_from_seed);
+    // emscripten::function("seed_and_keys_from_mnemonic", &seed_and_keys_from_mnemonic);
+    // emscripten::function("validate_components_for_login", &validate_components_for_login);
+    // emscripten::function("address_and_keys_from_seed", &address_and_keys_from_seed);
     //
-    emscripten::function("estimated_tx_network_fee", &estimated_tx_network_fee);
-    emscripten::function("estimate_fee", &estimate_fee);
-    emscripten::function("estimate_tx_weight", &estimate_tx_weight);
-    emscripten::function("estimate_rct_tx_size", &estimate_rct_tx_size);
+    // emscripten::function("estimated_tx_network_fee", &estimated_tx_network_fee);
+    // emscripten::function("estimate_fee", &estimate_fee);
+    // emscripten::function("estimate_tx_weight", &estimate_tx_weight);
+    // emscripten::function("estimate_rct_tx_size", &estimate_rct_tx_size);
     //
     emscripten::function("generate_key_image", &generate_key_image);
     emscripten::function("generate_key_derivation", &generate_key_derivation);
     emscripten::function("derive_public_key", &derive_public_key);
-    emscripten::function("derive_subaddress_public_key", &derive_subaddress_public_key);
+    // emscripten::function("derive_subaddress_public_key", &derive_subaddress_public_key);
     emscripten::function("decodeRct", &decodeRct);
     emscripten::function("decodeRctSimple", &decodeRctSimple);
     emscripten::function("derivation_to_scalar", &derivation_to_scalar);
     emscripten::function("encrypt_payment_id", &encrypt_payment_id);
     //
-    emscripten::function("send_step1__prepare_params_for_get_decoys", &send_step1__prepare_params_for_get_decoys);
+    // emscripten::function("send_step1__prepare_params_for_get_decoys", &send_step1__prepare_params_for_get_decoys);
     emscripten::function("send_step2__try_create_transaction", &send_step2__try_create_transaction);
     //
     emscripten::function("extract_utxos", &extract_utxos);
