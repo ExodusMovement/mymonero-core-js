@@ -34,8 +34,6 @@ set(
     SRC_FILES
     #
     src/index.cpp
-    src/emscr_async_send_bridge.hpp
-    src/emscr_async_send_bridge.cpp
     #
     ${MYMONERO_CORE_CPP_SRC}/monero_address_utils.hpp
     ${MYMONERO_CORE_CPP_SRC}/monero_address_utils.cpp

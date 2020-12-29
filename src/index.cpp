@@ -35,46 +35,8 @@
 //
 #include "serial_bridge_index.hpp"
 #include "serial_bridge_utils.hpp"
-#include "emscr_async_send_bridge.hpp"
 //
 using namespace std;
-//
-string send_funds(const string &args_string)
-{
-    try {
-        emscr_async_bridge::send_funds(args_string);
-        return string("{}");
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string send_cb_I__got_unspent_outs(const string &args_string)
-{
-    try {
-        emscr_async_bridge::send_cb_I__got_unspent_outs(args_string);
-        return string("{}");
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string send_cb_II__got_random_outs(const string &args_string)
-{
-    try {
-        emscr_async_bridge::send_cb_II__got_random_outs(args_string);
-        return string("{}");
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string send_cb_III__submitted_tx(const string &args_string)
-{
-    try {
-        emscr_async_bridge::send_cb_III__submitted_tx(args_string);
-        return string("{}");
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
 //
 string decode_address(const string &args_string)
 {
@@ -295,10 +257,6 @@ string extract_utxos(const string &args_string)
 //
 EMSCRIPTEN_BINDINGS(my_module)
 { // C++ -> JS
-    // emscripten::function("send_funds", &send_funds);
-    // emscripten::function("send_cb_I__got_unspent_outs", &send_cb_I__got_unspent_outs);
-    // emscripten::function("send_cb_II__got_random_outs", &send_cb_II__got_random_outs);
-    // emscripten::function("send_cb_III__submitted_tx", &send_cb_III__submitted_tx);
     //
     // emscripten::function("decode_address", &decode_address);
     // emscripten::function("is_subaddress", &is_subaddress);
