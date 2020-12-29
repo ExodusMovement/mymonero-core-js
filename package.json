@@ -43,10 +43,7 @@
   },
   "files": [
     "index.js",
-    "cryptonote_utils/nettype.js",
-    "monero_utils/MyMoneroBridgeClass_Base.js",
     "monero_utils/MyMoneroBridge_utils.js",
-    "monero_utils/MyMoneroCoreBridgeClass.js",
     "monero_utils/MyMoneroCoreBridgeEssentialsClass.js",
     "monero_utils/MyMoneroCoreCpp_WASM.js",
     "monero_utils/MyMoneroCoreCpp_WASM.wasm"

@@ -1,11 +1,11 @@
 'use strict'
 
-const MyMoneroCoreBridgeClass = require('./monero_utils/MyMoneroCoreBridgeClass.js')
+const MyMoneroCoreBridgeEssentialsClass = require('./monero_utils/MyMoneroCoreBridgeEssentialsClass.js')
 const MyMoneroCoreCppWASM = require('./monero_utils/MyMoneroCoreCpp_WASM.js')
 
 async function loadMyMoneroCore(options) {
   const thisModule = await MyMoneroCoreCppWASM(options).ready
-  const instance = new MyMoneroCoreBridgeClass(thisModule)
+  const instance = new MyMoneroCoreBridgeEssentialsClass(thisModule)
   return instance
 }
 
