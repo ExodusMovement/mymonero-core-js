@@ -44,17 +44,17 @@ clonerepo "${monero_core_custom_url}" 'src/submodules/mymonero-core-cpp/contrib/
 # Prepare boost source code
 
 echo "Downloading and validating boost..."
-if [[ ! -f "boost_1_69_0.tar.gz" ]]; then
+if [[ ! -f "boost_1_79_0.tar.gz" ]]; then
   curl -LO "${boost_url}"
 fi
-if [ "$(shasum -a 256 'boost_1_69_0.tar.gz' | sed s/' .*'//)" != "${boost_sha256}" ]; then
+if [ "$(shasum -a 256 'boost_1_79_0.tar.gz' | sed s/' .*'//)" != "${boost_sha256}" ]; then
   echo "Invalid boost shasum!"
   exit 1
 fi
 
 echo "Extracting boost..."
 rm -rf 'contrib/boost-sdk' && mkdir -p 'contrib/boost-sdk'
-tar zxf 'boost_1_69_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
+tar zxf 'boost_1_79_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
 
 # Prepare for build
 
