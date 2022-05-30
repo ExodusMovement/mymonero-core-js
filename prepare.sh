@@ -11,8 +11,8 @@ monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
 monero_core_custom_hash='c601fdc3a7aa0c449a3e2c99df230f503fb67e3c'
 
 ## Boost, hash should match upstream documented
-boost_url='https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz'
-boost_sha256='9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb' # per https://www.boost.org/users/history/version_1_69_0.html
+boost_url='https://boostorg.jfrog.io/artifactory/main/release/1.79.0/source/boost_1_79_0.tar.gz'
+boost_sha256='273f1be93238a068aba4f9735a4a2b003019af067b9c183ed227780b8f36062c' # per https://www.boost.org/users/history/version_1_69_0.html
 
 if [ "$(basename "$(pwd)")" != "mymonero-core-js" ]; then
   echo "Should be ran from the repo dir!"
