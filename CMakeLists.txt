@@ -3,14 +3,18 @@ cmake_minimum_required(VERSION 3.4.1)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 project(MyMoneroCoreCpp)
+
 #
 include_directories("build/boost/include") # must exist already - run bin/build-boost-emscripten.sh
+
 #
 include_directories("src")
+
 #
 set(MYMONERO_CORE_CPP "src/submodules/mymonero-core-cpp")
 set(MYMONERO_CORE_CPP_SRC "${MYMONERO_CORE_CPP}/src")
 include_directories("${MYMONERO_CORE_CPP}/src")
+
 #
 set(MONERO_SRC "${MYMONERO_CORE_CPP}/contrib/monero-core-custom")
 include_directories(${MONERO_SRC})
@@ -26,14 +30,17 @@ include_directories("${MONERO_SRC}/rpc")
 include_directories("${MONERO_SRC}/mnemonics")
 include_directories("${MONERO_SRC}/contrib/libsodium/include") # support sodium/… paths
 include_directories("${MONERO_SRC}/contrib/libsodium/include/sodium")
+
 #
-# keeping test files in a separate source directory 
+# keeping test files in a separate source directory
 # file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} test/test_*.cpp)
 #
 set(
     SRC_FILES
+
     #
     src/index.cpp
+
     #
     ${MYMONERO_CORE_CPP_SRC}/monero_address_utils.hpp
     ${MYMONERO_CORE_CPP_SRC}/monero_address_utils.cpp
@@ -57,10 +64,12 @@ set(
     ${MYMONERO_CORE_CPP_SRC}/serial_bridge_utils.cpp
     ${MYMONERO_CORE_CPP_SRC}/tools__ret_vals.hpp
     ${MYMONERO_CORE_CPP_SRC}/tools__ret_vals.cpp
+
     #
     ${MONERO_SRC}/cryptonote_basic/cryptonote_basic_impl.cpp
     ${MONERO_SRC}/cryptonote_basic/account.cpp
     ${MONERO_SRC}/cryptonote_basic/cryptonote_format_utils.cpp
+    ${MONERO_SRC}/cryptonote_basic/cryptonote_format_utils_basic.cpp
     ${MONERO_SRC}/crypto/crypto.cpp
     ${MONERO_SRC}/crypto/hash.c
     ${MONERO_SRC}/crypto/slow-hash-dummied.cpp
@@ -85,6 +94,7 @@ set(
     ${MONERO_SRC}/ringct/rctCryptoOps.c
     ${MONERO_SRC}/ringct/rctSigs.cpp
     ${MONERO_SRC}/ringct/bulletproofs.cc
+    ${MONERO_SRC}/ringct/bulletproofs_plus.cc
     ${MONERO_SRC}/ringct/multiexp.cc
     ${MONERO_SRC}/mnemonics/electrum-words.cpp
     ${MONERO_SRC}/contrib/libsodium/src/crypto_verify/verify.c
@@ -102,17 +112,20 @@ set_target_properties(
     boost_system PROPERTIES IMPORTED_LOCATION
     ${boost_DIR}/lib/libboost_system.a
 )
+
 #
 add_library(boost_thread STATIC IMPORTED)
 set_target_properties(
     boost_thread PROPERTIES IMPORTED_LOCATION
     ${boost_DIR}/lib/libboost_thread.a
 )
+
 #
 #
-set (
+set(
     EMCC_LINKER_FLAGS__WASM
-    #unsure if the -I...boost..include is necessary here due to include above
+
+    # unsure if the -I...boost..include is necessary here due to include above
     #
     "-Wall -std=c++11 \
 --bind \
@@ -138,22 +151,27 @@ set (
 \
 -s AUTO_JS_LIBRARIES=0 \
 "
-    # • Disabling exception catching does not introduce silent failures 
+
+    # • Disabling exception catching does not introduce silent failures
     # • Probably don't need PRECISE_F32 but wouldn't want to not use it
     #
     #
     # -s SAFE_HEAP=1 \
     # -g \
 )
+
 #
-#    -s EXPORTED_FUNCTIONS='[\"_sc_reduce\", \"_sc_reduce32\", \"_sc_check\", \"_sc_add\", \"_ge_fromfe_frombytes_vartime\", \"_ge_mul8\", \"_ge_p1p1_to_p3\", \"_ge_p3_tobytes\", \"_ge_scalarmult\", \"_ge_tobytes\", \"_sc_sub\", \"_sc_mulsub\", \"_ge_scalarmult_base\", \"_sc_0\", \"_ge_double_scalarmult_base_vartime\", \"_ge_double_scalarmult_precomp_vartime\", \"_ge_frombytes_vartime\", \"_ge_dsm_precomp\"]' \
+# -s EXPORTED_FUNCTIONS='[\"_sc_reduce\", \"_sc_reduce32\", \"_sc_check\", \"_sc_add\", \"_ge_fromfe_frombytes_vartime\", \"_ge_mul8\", \"_ge_p1p1_to_p3\", \"_ge_p3_tobytes\", \"_ge_scalarmult\", \"_ge_tobytes\", \"_sc_sub\", \"_sc_mulsub\", \"_ge_scalarmult_base\", \"_sc_0\", \"_ge_double_scalarmult_base_vartime\", \"_ge_double_scalarmult_precomp_vartime\", \"_ge_frombytes_vartime\", \"_ge_dsm_precomp\"]' \
 #
 #
 message(STATUS "EMCC_LINKER_FLAGS__WASM ${EMCC_LINKER_FLAGS__WASM}")
+
 #
 add_executable(MyMoneroCoreCpp_WASM ${SRC_FILES})
+
 #
 set_target_properties(MyMoneroCoreCpp_WASM PROPERTIES LINK_FLAGS "${EMCC_LINKER_FLAGS__WASM}")
+
 #
 # boost_atomic
 # boost_date_time
@@ -168,10 +186,12 @@ set_target_properties(MyMoneroCoreCpp_WASM PROPERTIES LINK_FLAGS "${EMCC_LINKER_
 #
 target_link_libraries(
     MyMoneroCoreCpp_WASM
+
     #
     boost_chrono
     boost_system
     boost_thread
+
     #
     ${log-lib}
 )

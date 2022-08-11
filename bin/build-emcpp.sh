@@ -5,4 +5,5 @@
 mkdir -p build &&
 cd build &&
 emcmake cmake .. &&
-emmake make -j `nproc`
+emmake cmake --build . && 
+emmake make .
