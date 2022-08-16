@@ -254,6 +254,14 @@ string extract_utxos(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+string pre_step2_tie_unspent_outs_to_mix_outs_for_all_future_tx_attempts(const string &args_string)
+{
+    try {
+        return serial_bridge::pre_step2_tie_unspent_outs_to_mix_outs_for_all_future_tx_attempts(args_string);
+    } catch (std::exception &e) {
+        return serial_bridge_utils::error_ret_json_from_message(e.what());
+    }
+}
 //
 EMSCRIPTEN_BINDINGS(my_module)
 { // C++ -> JS
@@ -287,6 +295,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     emscripten::function("encrypt_payment_id", &encrypt_payment_id);
     //
     // emscripten::function("send_step1__prepare_params_for_get_decoys", &send_step1__prepare_params_for_get_decoys);
+    emscripten::function("pre_step2_tie_unspent_outs_to_mix_outs_for_all_future_tx_attempts", &pre_step2_tie_unspent_outs_to_mix_outs_for_all_future_tx_attempts);
     emscripten::function("send_step2__try_create_transaction", &send_step2__try_create_transaction);
     //
     emscripten::function("extract_utxos", &extract_utxos);
