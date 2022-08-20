@@ -6,12 +6,12 @@ set -e # Exit on any error
 
 ## These should be audited!
 mymonero_core_cpp_url='https://github.com/ExodusMovement/mymonero-core-cpp'
-mymonero_core_cpp_hash='69408962a900c64483311c42768fa876381d3d57'
+mymonero_core_cpp_hash='540ac580c7a53ee79a280cc706176330e245f15a'
 monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
-monero_core_custom_hash='c601fdc3a7aa0c449a3e2c99df230f503fb67e3c'
+monero_core_custom_hash='0c23c8d58c4247bae91c0f62c77fb815f5bb5e08'
 
 ## Boost, hash should match upstream documented
-boost_url='https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz'
+boost_url='https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
 boost_sha256='9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb' # per https://www.boost.org/users/history/version_1_69_0.html
 
 if [ "$(basename "$(pwd)")" != "mymonero-core-js" ]; then
