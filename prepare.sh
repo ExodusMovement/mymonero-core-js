@@ -6,9 +6,9 @@ set -e # Exit on any error
 
 ## These should be audited!
 mymonero_core_cpp_url='https://github.com/ExodusMovement/mymonero-core-cpp'
-mymonero_core_cpp_hash='d3dce4a8d93aa096bafcf7cdb0916095f394ff5e'
+mymonero_core_cpp_hash='4e9110545e44abd3ef47324e0c031170e0999de8'
 monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
-monero_core_custom_hash='0c23c8d58c4247bae91c0f62c77fb815f5bb5e08'
+monero_core_custom_hash='4716e69840a2c61f29b4b58a0366e4684a4e1020'
 
 ## Boost, hash should match upstream documented
 boost_url='https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
