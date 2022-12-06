@@ -82,8 +82,10 @@ set(
     ${MONERO_SRC}/crypto/random.c
     ${MONERO_SRC}/crypto/tree-hash.c
     ${MONERO_SRC}/cryptonote_core/cryptonote_tx_utils.cpp
+    ${MONERO_SRC}/common/threadpool.cpp
     ${MONERO_SRC}/common/base58.cpp
     ${MONERO_SRC}/common/aligned.c
+    ${MONERO_SRC}/common/util.cpp
     ${MONERO_SRC}/epee/src/hex.cpp
     ${MONERO_SRC}/epee/src/string_tools.cpp
     ${MONERO_SRC}/epee/src/memwipe.c
