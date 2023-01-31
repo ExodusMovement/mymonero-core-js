@@ -16,6 +16,6 @@ tests/web/mymonero-core.js
 tests/web/mymonero_core_js
 tests/web/mymonero-core.js.map
 
-src/submodules
+src/submodules/
 contrib/boost-sdk/
 boost_*.tar.gz
