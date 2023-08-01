@@ -20,14 +20,14 @@ rm -rf build && mkdir build
 rm monero_utils/MyMoneroCoreCpp_*
 
 # Build boost emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/build-boost-emscripten.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/build-boost-emscripten.sh
 
 # Build MyMonero emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/archive-emcpp.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/archive-emcpp.sh
 
 # If you get '#error Including <emscripten/bind.h> requires building with -std=c++11 or newer!' error, re-run:
 
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:1.38.48 ./bin/archive-emcpp.sh
+docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/archive-emcpp.sh
 ```
 
 # Other Notes
