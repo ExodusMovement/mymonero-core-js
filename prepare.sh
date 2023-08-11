@@ -9,6 +9,8 @@ mymonero_core_cpp_url='https://github.com/ExodusMovement/mymonero-core-cpp'
 mymonero_core_cpp_hash='4f4a013ab3bad790c53cfdac6f8703d6f4935924'
 monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
 monero_core_custom_hash='7a9839da54995b25974a04f607855f7b4f748d5b'
+docker_emscripten_url='https://github.com/ExodusMovement/docker-emscripten'
+docker_emscripten_hash='510c4c4806a9ad1b04ceacf1005f633fd4ce7b04'
 
 ## Boost, hash should match upstream documented
 boost_url='https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
@@ -35,14 +37,13 @@ function clonerepo { # source, target, commit
 }
 
 # Clone dependencies
-
 echo "Cloning dependencies..."
 rm -rf 'src/submodules' && mkdir -p 'src/submodules'
 clonerepo "${mymonero_core_cpp_url}" 'src/submodules/mymonero-core-cpp' "${mymonero_core_cpp_hash}"
 clonerepo "${monero_core_custom_url}" 'src/submodules/mymonero-core-cpp/contrib/monero-core-custom' "${monero_core_custom_hash}"
+clonerepo "${docker_emscripten_url}" 'docker-deps/docker-emscripten' "${docker_emscripten_hash}"
 
 # Prepare boost source code
-
 echo "Downloading and validating boost..."
 if [[ ! -f "boost_1_69_0.tar.gz" ]]; then
   curl -LO "${boost_url}"
@@ -56,11 +57,14 @@ echo "Extracting boost..."
 rm -rf 'contrib/boost-sdk' && mkdir -p 'contrib/boost-sdk'
 tar zxf 'boost_1_69_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
 
-# Prepare for build
-
-echo "Clearing the build dir..."
-rm -rf build && mkdir build
+# Build docker emscripten locally to avoid trusting the registry
+echo "Building Docker Emscripten..."
+cd docker-deps/docker-emscripten
+docker build \
+  --platform linux/amd64 \
+  -t local-registry.exodus.com/emscripten:latest \
+  .
+cd ../..
 
 # Finished
-
 echo "All done! We are prepared for the build now."
