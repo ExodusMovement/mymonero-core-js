@@ -19,3 +19,5 @@ tests/web/mymonero-core.js.map
 src/submodules/
 contrib/boost-sdk/
 boost_*.tar.gz
+
+docker-deps

@@ -14,23 +14,9 @@ git pull
 ### 3. Build emscripten
 
 ```shell
-
-# Clean up old build files
-rm -rf build && mkdir build
-rm monero_utils/MyMoneroCoreCpp_*
-
-# Build boost emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/build-boost-emscripten.sh
-
-# Build MyMonero emscripten
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/archive-emcpp.sh
-
-# If you get '#error Including <emscripten/bind.h> requires building with -std=c++11 or newer!' error, re-run:
-
-docker run -it -v $(pwd):/app quay.io/exodusmovement/emscripten:3294ae562683 ./bin/archive-emcpp.sh
+./build.sh
 ```
 
 # Other Notes
 
-The `quay.io/exodusmovement/emscripten` image was built by Quay.io
-See instructions at https://github.com/ExodusMovement/docker-emscripten
+Emscripten is built in docker from https://github.com/ExodusMovement/docker-emscripten, but we build it locally as part of the build process in prepare.sh
