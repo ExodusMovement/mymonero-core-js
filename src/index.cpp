@@ -38,6 +38,7 @@
 //
 using namespace std;
 //
+/*
 string decode_address(const string &args_string)
 {
     try {
@@ -58,72 +59,6 @@ string is_integrated_address(const string &args_string)
 {
     try {
         return serial_bridge::is_integrated_address(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-//
-string new_integrated_address(const string &args_string)
-{
-    try {
-        return serial_bridge::new_integrated_address(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string new_payment_id(const string &args_string)
-{
-    try {
-        return serial_bridge::new_payment_id(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-//
-string newly_created_wallet(const string &args_string)
-{
-    try {
-        return serial_bridge::newly_created_wallet(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string are_equal_mnemonics(const string &args_string)
-{
-    try {
-        return serial_bridge::are_equal_mnemonics(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string address_and_keys_from_seed(const string &args_string)
-{
-    try {
-        return serial_bridge::address_and_keys_from_seed(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string mnemonic_from_seed(const string &args_string)
-{
-    try {
-        return serial_bridge::mnemonic_from_seed(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string seed_and_keys_from_mnemonic(const string &args_string)
-{
-    try {
-        return serial_bridge::seed_and_keys_from_mnemonic(args_string);
-    } catch (std::exception &e) {
-        return serial_bridge_utils::error_ret_json_from_message(e.what());
-    }
-}
-string validate_components_for_login(const string &args_string)
-{
-    try {
-        return serial_bridge::validate_components_for_login(args_string);
     } catch (std::exception &e) {
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
@@ -164,6 +99,7 @@ string estimate_rct_tx_size(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+*/
 //
 string generate_key_image(const string &args_string)
 {
@@ -190,6 +126,7 @@ string derive_public_key(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+/*
 string derive_subaddress_public_key(const string &args_string)
 {
     try {
@@ -198,6 +135,7 @@ string derive_subaddress_public_key(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+*/
 string derivation_to_scalar(const string &args_string)
 {
     try {
@@ -230,6 +168,7 @@ string encrypt_payment_id(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+/*
 string send_step1__prepare_params_for_get_decoys(const string &args_string)
 {
     try {
@@ -238,6 +177,7 @@ string send_step1__prepare_params_for_get_decoys(const string &args_string)
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+*/
 string send_step2__try_create_transaction(const string &args_string)
 {
     try {
@@ -269,16 +209,6 @@ EMSCRIPTEN_BINDINGS(my_module)
     // emscripten::function("decode_address", &decode_address);
     // emscripten::function("is_subaddress", &is_subaddress);
     // emscripten::function("is_integrated_address", &is_integrated_address);
-    //
-    // emscripten::function("new_integrated_address", &new_integrated_address);
-    // emscripten::function("new_payment_id", &new_payment_id);
-    //
-    // emscripten::function("newly_created_wallet", &newly_created_wallet);
-    // emscripten::function("are_equal_mnemonics", &are_equal_mnemonics);
-    emscripten::function("mnemonic_from_seed", &mnemonic_from_seed);
-    // emscripten::function("seed_and_keys_from_mnemonic", &seed_and_keys_from_mnemonic);
-    // emscripten::function("validate_components_for_login", &validate_components_for_login);
-    // emscripten::function("address_and_keys_from_seed", &address_and_keys_from_seed);
     //
     // emscripten::function("estimated_tx_network_fee", &estimated_tx_network_fee);
     // emscripten::function("estimate_fee", &estimate_fee);
