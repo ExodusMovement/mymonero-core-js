@@ -6,7 +6,7 @@ set -e # Exit on any error
 
 ## These should be audited!
 mymonero_core_cpp_url='https://github.com/ExodusMovement/mymonero-core-cpp'
-mymonero_core_cpp_hash='b0412c3054e2edb5bba7b6ac5bc9c941fa62d3e0'
+mymonero_core_cpp_hash='db133d3eda862e4d3879628e9a2b9ac68f077895'
 monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
 monero_core_custom_hash='7a9839da54995b25974a04f607855f7b4f748d5b'
 docker_emscripten_url='https://github.com/ExodusMovement/docker-emscripten'
