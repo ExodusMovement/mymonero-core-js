@@ -202,6 +202,14 @@ string pre_step2_tie_unspent_outs_to_mix_outs_for_all_future_tx_attempts(const s
         return serial_bridge_utils::error_ret_json_from_message(e.what());
     }
 }
+string verify_trezor_key_image(const string &args_string)
+{
+    try {
+        return serial_bridge::verify_trezor_key_image(args_string);
+    } catch (std::exception &e) {
+        return serial_bridge_utils::error_ret_json_from_message(e.what());
+    }
+}
 //
 EMSCRIPTEN_BINDINGS(my_module)
 { // C++ -> JS
@@ -229,6 +237,7 @@ EMSCRIPTEN_BINDINGS(my_module)
     emscripten::function("send_step2__try_create_transaction", &send_step2__try_create_transaction);
     //
     emscripten::function("extract_utxos", &extract_utxos);
+    emscripten::function("verify_trezor_key_image", &verify_trezor_key_image);
 }
 extern "C"
 { // C -> JS
