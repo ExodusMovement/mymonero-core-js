@@ -6,7 +6,7 @@ set -e # Exit on any error
 
 ## These should be audited!
 mymonero_core_cpp_url='https://github.com/ExodusMovement/mymonero-core-cpp'
-mymonero_core_cpp_hash='5833e2ce0aff0662d3f91cc18ebcf8cd46b39c5a'
+mymonero_core_cpp_hash='6abaa0443394f38959defb9b29d27ca08ca5897d'
 monero_core_custom_url='https://github.com/ExodusMovement/monero-core-custom'
 monero_core_custom_hash='7a9839da54995b25974a04f607855f7b4f748d5b'
 docker_emscripten_url='https://github.com/ExodusMovement/docker-emscripten'
@@ -53,9 +53,9 @@ if [ "$(shasum -a 256 'boost_1_69_0.tar.gz' | sed s/' .*'//)" != "${boost_sha256
   exit 1
 fi
 
-# echo "Extracting boost..."
-# rm -rf 'contrib/boost-sdk' && mkdir -p 'contrib/boost-sdk'
-# tar zxf 'boost_1_69_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
+echo "Extracting boost..."
+rm -rf 'contrib/boost-sdk' && mkdir -p 'contrib/boost-sdk'
+tar zxf 'boost_1_69_0.tar.gz' -C 'contrib/boost-sdk' --strip-components=1
 
 # Build docker emscripten locally to avoid trusting the registry
 echo "Building Docker Emscripten..."
