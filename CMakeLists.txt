@@ -66,6 +66,8 @@ set(
     ${MYMONERO_CORE_CPP_SRC}/serial_bridge_utils.cpp
     ${MYMONERO_CORE_CPP_SRC}/tools__ret_vals.hpp
     ${MYMONERO_CORE_CPP_SRC}/tools__ret_vals.cpp
+    ${MYMONERO_CORE_CPP_SRC}/device_trezor.hpp
+    ${MYMONERO_CORE_CPP_SRC}/device_trezor.cpp
 
     #
     ${MONERO_SRC}/cryptonote_basic/cryptonote_basic_impl.cpp
