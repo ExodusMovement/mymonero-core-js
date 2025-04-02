@@ -13,7 +13,7 @@ docker_emscripten_url='https://github.com/ExodusMovement/docker-emscripten'
 docker_emscripten_hash='510c4c4806a9ad1b04ceacf1005f633fd4ce7b04'
 
 ## Boost, hash should match upstream documented
-boost_url='https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
+boost_url='https://archives.boost.io/release/1.69.0/source/boost_1_69_0.tar.gz'
 boost_sha256='9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb' # per https://www.boost.org/users/history/version_1_69_0.html
 
 if [ "$(basename "$(pwd)")" != "mymonero-core-js" ]; then

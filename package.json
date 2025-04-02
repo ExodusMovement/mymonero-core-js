@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mymonero/mymonero-core-js.git"
+    "url": "git+https://github.com/ExodusMovement/mymonero-core-js.git"
   },
   "scripts": {
     "format": "find . -name '*.js*' | xargs prettier --write --config ./.prettierrc --config-precedence file-override",
@@ -27,9 +27,9 @@
   "author": "MyMonero",
   "license": "See LICENSE.TXT. Copyright (c) 2014-2019, MyMonero.com. All rights reserved.",
   "bugs": {
-    "url": "https://github.com/mymonero/mymonero-core-js/issues"
+    "url": "https://github.com/ExodusMovement/mymonero-core-js/issues"
   },
-  "homepage": "https://github.com/mymonero/mymonero-core-js#readme",
+  "homepage": "https://github.com/ExodusMovement/mymonero-core-js#readme",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "6.26.3",
